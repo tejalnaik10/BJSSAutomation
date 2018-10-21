@@ -2,6 +2,7 @@ package pageObjects;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ public class OrderHistoryPO {
 	By comment=By.xpath("//*[@id='sendOrderMessage']/p[3]/textarea");
 	By sendButton=By.xpath("//*[@id='sendOrderMessage']/div/button/span");
 	By messageTable=By.xpath("//*[@id='block-order-detail']/div[5]/table/tbody/tr/td");
+	By dressDetailstbl=By.xpath("//*[@id='order-detail-content']/table/tbody/tr");
 
 	public OrderHistoryPO(WebDriver driver) {
 		this.driver = driver;
@@ -58,5 +60,23 @@ public class OrderHistoryPO {
 				System.out.println("No matching comment found");
 			}
 	}
+	
+	public void verifyDress(String dressRef, String dressDetails){
+		List<WebElement> dress=driver.findElements(dressDetailstbl);
+		if(dress.size()>0){
+		outerloop:
+			for(int i=0;i<dress.size();i++){
+				List<WebElement> col=dress.get(i).findElements(By.tagName("td"));
+				for(int j=0;j<col.size();j++){
+					if(col.get(j).getText().equalsIgnoreCase(dressRef)){
+						j++;
+						Assert.assertEquals(col.get(j).getText(),dressDetails);
+						break outerloop;
+				}
+			}
+			
+		}
+	}
 
+}
 }
