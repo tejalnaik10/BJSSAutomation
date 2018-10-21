@@ -14,9 +14,9 @@ import managers.FileReaderManager;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/features", glue = { "classpath:gluecode" },
 plugin = {
-		"pretty", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-html-extent/report.html",
+		"pretty",
 		"html:target/cucumber-html-default",
-		"junit:target/cucumber-report.xml" },monochrome = true)
+		"junit:target/cucumber-report.xml" },monochrome = true, tags={"@reviewPrevOrders"})
 public class testRunner {
 	
 

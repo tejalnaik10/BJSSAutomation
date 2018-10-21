@@ -12,6 +12,7 @@ Feature: Review Previous Orders and add a message
   And the user selects an "<order>" by date
   Then the user adds a "<comment>" on the order
   Then the user verifies the "<comment>"
+  Then the user selects "signOut" 
   
   Examples:
   |   order  |    comment    |
