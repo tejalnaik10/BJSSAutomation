@@ -5,17 +5,20 @@ import java.io.File;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
-import com.cucumber.listener.Reporter;
+import com.vimalselvam.cucumber.listener.Reporter;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import managers.FileReaderManager;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/features", glue = { "src/test/java/gluecode" }, plugin = {
-		"com.cucumber.listener.ExtentCucumberFormatter:output/report.html" }, monochrome = true, tags = {
-				"@purchaseItems" })
+@CucumberOptions(features = "src/test/resources/features", glue = { "classpath:gluecode" },
+plugin = {
+		"pretty", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-html-extent/report.html",
+		"html:target/cucumber-html-default",
+		"junit:target/cucumber-report.xml" },monochrome = true)
 public class testRunner {
+	
 
 	@AfterClass
 	public static void writeExtentReport() {

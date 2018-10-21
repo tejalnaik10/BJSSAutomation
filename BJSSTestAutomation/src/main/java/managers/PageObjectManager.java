@@ -7,6 +7,8 @@ import pageObjects.HomePagePO;
 import pageObjects.ItemDetailsPagePO;
 import pageObjects.LaunchingPagePO;
 import pageObjects.LoginPO;
+import pageObjects.MyAccountPO;
+import pageObjects.OrderHistoryPO;
 
 public class PageObjectManager {
 
@@ -16,11 +18,17 @@ public class PageObjectManager {
 	private ItemDetailsPagePO objItemDetails;
 	private LaunchingPagePO objlaunch;
 	private CheckoutPO objCartSummary;
+	private MyAccountPO objMyAccount;
+	private OrderHistoryPO objOrderHistory;
 
 	public PageObjectManager(WebDriver driver) {
 		this.driver = driver;
 	}
 
+	public MyAccountPO getMyAccountPO() {
+		return (objMyAccount == null) ? objMyAccount = new MyAccountPO(driver) : objMyAccount;
+	}
+	
 	public LoginPO getLoginPO() {
 		return (objLogin == null) ? objLogin = new LoginPO(driver) : objLogin;
 	}
@@ -39,6 +47,10 @@ public class PageObjectManager {
 
 	public LaunchingPagePO getLaunchingPagePO() {
 		return (objlaunch == null) ? objlaunch = new LaunchingPagePO(driver) : objlaunch;
+	}
+	
+	public OrderHistoryPO getOrderHistoryPO() {
+		return (objOrderHistory == null) ? objOrderHistory = new OrderHistoryPO(driver) : objOrderHistory;
 	}
 
 }

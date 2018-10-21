@@ -15,6 +15,7 @@ public class WebDriverManager {
 	private static DriverType driverType;
 	private static EnvironmentType environmentType;
 	private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
+	private static final String FIREFOX_DRIVER_PROPERTY = "webdriver.gecko.driver";
 
 	public WebDriverManager() {
 		driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
@@ -43,6 +44,8 @@ public class WebDriverManager {
 	private WebDriver createLocalDriver() {
 		switch (driverType) {
 		case FIREFOX:
+			System.setProperty(FIREFOX_DRIVER_PROPERTY,
+					FileReaderManager.getInstance().getConfigReader().getDriverPath());
 			driver = new FirefoxDriver();
 			break;
 		case CHROME:
