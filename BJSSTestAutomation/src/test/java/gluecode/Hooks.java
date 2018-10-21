@@ -6,11 +6,14 @@ import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
+
+import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 
 import cucumber.TestContext;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.Before;
 
 public class Hooks {
 	TestContext testContext;
@@ -18,15 +21,17 @@ public class Hooks {
 	public Hooks(TestContext context) {
 		testContext = context;
 	}
+	
+	@Before
+	public void beforeScenario(Scenario scenario) {
+		Reporter.assignAuthor("ToolsQA - Lakshay Sharma");
+	}
 
 	@BeforeMethod
 	public void BeforeSteps() {
-		/*
-		 * add steps to perform before test
-		 */
 	}
 	
-	@After(order = 1)
+	@After //(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
@@ -42,7 +47,7 @@ public class Hooks {
 				Files.copy(sourcePath, destinationPath);   
  
 				//This attach the specified screenshot to the test
-			//	Reporter.addScreenCaptureFromPath(destinationPath.toString());
+				Reporter.addScreenCaptureFromPath(destinationPath.toString());
 			} catch (IOException e) {
 			} 
 		}

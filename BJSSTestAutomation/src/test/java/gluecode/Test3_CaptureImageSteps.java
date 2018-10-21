@@ -15,6 +15,6 @@ public class Test3_CaptureImageSteps {
 	
 	@When("^the users confirms that the dress \"([^\"]*)\" is \"([^\"]*)\"$")
 	public void the_user_selects_an_by_date(String dressRef, String dressDetails) throws Throwable {
-		
+		objOrderHistory.verifyDress(dressRef, dressDetails);
 	}
 }
