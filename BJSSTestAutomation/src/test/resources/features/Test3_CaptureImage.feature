@@ -11,6 +11,7 @@ Feature: Capture screenshot on failure
   And the user views "order history and details"
   And the user selects an "<order>" by date
   And the users confirms that the dress "<dressref>" is "<description>"
+  Then the user selects "signOut" 
   
   Examples:
   |   order  |dressref|					description		 			  |

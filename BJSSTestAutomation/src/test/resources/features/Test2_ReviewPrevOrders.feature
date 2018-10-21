@@ -7,7 +7,7 @@ Feature: Review Previous Orders and add a message
     When the user selects "signIn"
     And the user enters "tejal.naik@gmail.com" and "BJSSTest"
 
-  Scenario Outline:
+  Scenario Outline: Review Previous orders
   And the user views "order history and details"
   And the user selects an "<order>" by date
   Then the user adds a "<comment>" on the order

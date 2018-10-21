@@ -15,7 +15,7 @@ import managers.FileReaderManager;
 @CucumberOptions(features = "src/test/resources/features", glue = "gluecode", plugin = { "pretty",
 		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html",
 		"junit:target/cucumber-reports/Cucumber.xml", "html:target/cucumber-reports" }, monochrome = true, tags = {
-				"@captureImage" })
+				"@browserTest" })
 public class testRunner {
 
 	@AfterClass

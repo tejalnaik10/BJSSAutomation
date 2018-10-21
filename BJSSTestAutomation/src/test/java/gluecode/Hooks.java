@@ -24,14 +24,14 @@ public class Hooks {
 	
 	@Before
 	public void beforeScenario(Scenario scenario) {
-		Reporter.assignAuthor("ToolsQA - Lakshay Sharma");
+		Reporter.assignAuthor("Tejal Naik");
 	}
 
 	@BeforeMethod
 	public void BeforeSteps() {
 	}
 	
-	@After //(order = 1)
+	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
@@ -54,9 +54,11 @@ public class Hooks {
 	}
 	
 
-	/*
-	 * @After public void AfterSteps() {
-	 * testContext.getWebDriverManager().closeDriver(); }
-	 */
+	
+	  @After(order = 0)
+	  public void AfterSteps() {
+	  testContext.getWebDriverManager().closeDriver(); 
+	  }
+	 
 
 }

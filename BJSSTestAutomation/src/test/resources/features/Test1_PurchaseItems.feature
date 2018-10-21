@@ -7,7 +7,7 @@ Feature: Happy Path- Purchase 2 items
     When the user selects "signIn"
     And the user enters "tejal.naik@gmail.com" and "BJSSTest"
 
-  Scenario: 
+  Scenario: Purchase 2 items
     And the user navigates to "Home" page
     Then the user selects "firstItem"
     And the users changes the "Size" of the item to "M"
